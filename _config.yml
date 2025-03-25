@@ -1,1 +1,8 @@
-theme: jekyll-theme-architect
+title: My Website
+description: "GitHub Pages と Jekyll を使ったリッチな静的サイトのサンプル"
+url: "https://yourusername.github.io" # GitHub Pages でホスティングする場合の URL
+baseurl: "" # サブディレクトリの場合はここに記述
+theme: minima  # シンプルなテーマの例。必要に応じてカスタムテーマも利用可能
+plugins:
+  - jekyll-feed  # RSS フィード生成プラグイン（オプション）
+markdown: kramdown

@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Page</title>
-</head>
-<body>
-    <header>
-        <h1>Welcome to My Website</h1>
-    </header>
-    <main>
-        <p>This is a simple HTML page.</p>
-    </main>
-    <footer>
-        <p>&copy; 2023 My Website</p>
-    </footer>
-</body>
-</html>
+---
+layout: default
+title: Home
+---
+
+<h1>Welcome to {{ site.title }}</h1>
+<p>{{ site.description }}</p>
+
+<section>
+  <h2>Latest Posts</h2>
+  <ul>
+    {% for post in site.posts limit: 5 %}
+      <li>
+        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <small>{{ post.date | date: "%Y-%m-%d" }}</small>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
