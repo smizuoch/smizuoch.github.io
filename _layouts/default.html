@@ -16,6 +16,10 @@
         <a href="{{ '/about' | relative_url }}" class="nav-link">自己紹介</a>
         <a href="{{ '/projects' | relative_url }}" class="nav-link">プロジェクト</a>
         <a href="{{ '/blog' | relative_url }}" class="nav-link">ブログ</a>
+        <button id="theme-toggle" class="theme-toggle-button" aria-label="Toggle theme">
+          <!-- Icon will be added by JS -->
+          ☀️
+        </button>
       </nav>
     </div>
   </header>
@@ -40,5 +44,7 @@
       </div>
     </div>
   </footer>
+
+  <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
 </body>
 </html>
