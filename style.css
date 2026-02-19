@@ -607,6 +607,8 @@ img {
   font-weight: 500;
   color: #16a34a;
   margin-bottom: 24px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .work-status {
