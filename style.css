@@ -33,6 +33,24 @@
   --section-padding: 96px 0;
 }
 
+/* ============================
+   Dark Mode — Apple / Google スタイル
+   ============================ */
+[data-theme="dark"] {
+  --color-bg: #1c1c1e;
+  --color-bg-alt: #2c2c2e;
+  --color-surface: #2c2c2e;
+  --color-border: #3a3a3c;
+  --color-text-primary: #f5f5f7;
+  --color-text-secondary: #a1a1a6;
+  --color-accent: #2997ff;
+  --color-accent-hover: #47aeff;
+  --color-accent-subtle: #1a2e4a;
+
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -45,6 +63,7 @@ body {
   color: var(--color-text-primary);
   line-height: 1.7;
   font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -110,7 +129,11 @@ img {
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--color-border);
-  transition: box-shadow var(--transition);
+  transition: box-shadow var(--transition), background var(--transition), border-color var(--transition);
+}
+
+[data-theme="dark"] .header {
+  background: rgba(28, 28, 30, 0.85);
 }
 
 .header.scrolled {
@@ -122,6 +145,12 @@ img {
   align-items: center;
   justify-content: space-between;
   height: 60px;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 28px;
 }
 
 .nav-logo {
@@ -193,6 +222,11 @@ img {
   pointer-events: none;
 }
 
+[data-theme="dark"] .hero-bg {
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(41, 151, 255, 0.12) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 40% at 80% 80%, rgba(41, 151, 255, 0.06) 0%, transparent 60%);
+}
+
 .hero-content {
   text-align: center;
   position: relative;
@@ -230,6 +264,13 @@ img {
   letter-spacing: -0.04em;
   line-height: 1;
   background: linear-gradient(135deg, #1d1d1f 0%, #3c3c3f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="dark"] .hero-name {
+  background: linear-gradient(135deg, #f5f5f7 0%, #a1a1a6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -287,6 +328,10 @@ img {
   background: #e8e8ed;
   transform: translateY(-1px);
   box-shadow: var(--shadow-card);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: #3a3a3c;
 }
 
 /* Scroll hint */
@@ -611,6 +656,12 @@ img {
   cursor: pointer;
 }
 
+[data-theme="dark"] .hero-available {
+  color: #34d058;
+  background: rgba(52, 208, 88, 0.12);
+  border-color: rgba(52, 208, 88, 0.3);
+}
+
 .work-status {
   display: flex;
   align-items: center;
@@ -623,6 +674,10 @@ img {
   font-size: 1rem;
   color: #16a34a;
   font-weight: 500;
+}
+
+[data-theme="dark"] .work-status-text {
+  color: #34d058;
 }
 
 .work-grid {
@@ -640,6 +695,11 @@ img {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+[data-theme="dark"] .work-highlight-card {
+  background: linear-gradient(135deg, var(--color-accent-subtle) 0%, var(--color-surface) 100%);
+  border-color: rgba(41, 151, 255, 0.2);
 }
 
 .work-highlight-icon {
@@ -718,6 +778,38 @@ img {
 }
 
 /* ============================
+   Theme Toggle Button
+   ============================ */
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: none;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  background: var(--color-bg-alt);
+  color: var(--color-text-primary);
+}
+
+/* ライトモード: 月アイコンを表示（ダークへ切り替え示唆） */
+.theme-toggle .icon-sun  { display: none; }
+.theme-toggle .icon-moon { display: block; }
+
+/* ダークモード: 太陽アイコンを表示（ライトへ切り替え示唆） */
+[data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+/* ============================
    Reveal animation
    ============================ */
 .reveal {
@@ -752,6 +844,10 @@ img {
     flex-direction: column;
     gap: 0;
     padding: 12px 0;
+  }
+
+  [data-theme="dark"] .nav-list {
+    background: rgba(28, 28, 30, 0.98);
   }
 
   .nav-list.open {

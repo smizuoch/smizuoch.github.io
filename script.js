@@ -100,3 +100,30 @@ const sectionObserver = new IntersectionObserver(
 );
 
 sections.forEach(section => sectionObserver.observe(section));
+
+/* ============================
+   Dark Mode
+   ============================ */
+const themeToggle = document.getElementById('themeToggle');
+const htmlEl = document.documentElement;
+
+/**
+ * テーマを適用し localStorage に保存する
+ */
+function applyTheme(theme) {
+  htmlEl.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}
+
+// ボタンクリックでトグル
+themeToggle.addEventListener('click', () => {
+  const current = htmlEl.getAttribute('data-theme');
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+// システム設定が変わったとき、ユーザーが手動で設定していなければ追従する
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  if (!localStorage.getItem('theme')) {
+    applyTheme(e.matches ? 'dark' : 'light');
+  }
+});
