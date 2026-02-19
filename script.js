@@ -5,6 +5,26 @@ const header = document.getElementById('header');
 const navToggle = document.getElementById('navToggle');
 const navList = document.querySelector('.nav-list');
 
+function setNavMenuState(open) {
+  navList.classList.toggle('open', open);
+  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  navToggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+
+  const spans = navToggle.querySelectorAll('span');
+  if (open) {
+    spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+    return;
+  }
+  spans.forEach(span => {
+    span.style.transform = '';
+    span.style.opacity = '';
+  });
+}
+
+setNavMenuState(false);
+
 // Sticky header shadow
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 10);
@@ -12,38 +32,27 @@ window.addEventListener('scroll', () => {
 
 // Mobile nav toggle
 navToggle.addEventListener('click', () => {
-  const open = navList.classList.toggle('open');
-  navToggle.setAttribute('aria-expanded', open);
-  const spans = navToggle.querySelectorAll('span');
-  if (open) {
-    spans[0].style.transform = 'translateY(7px) rotate(45deg)';
-    spans[1].style.opacity = '0';
-    spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
-  } else {
-    spans.forEach(s => {
-      s.style.transform = '';
-      s.style.opacity = '';
-    });
-  }
+  setNavMenuState(!navList.classList.contains('open'));
 });
 
 // Close mobile nav when a link is clicked
 navList.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', () => {
-    navList.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
-    navToggle.querySelectorAll('span').forEach(s => {
-      s.style.transform = '';
-      s.style.opacity = '';
-    });
+    setNavMenuState(false);
   });
+});
+
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && navList.classList.contains('open')) {
+    setNavMenuState(false);
+    navToggle.focus();
+  }
 });
 
 /* ============================
    Scroll reveal
    ============================ */
 const revealTargets = [
-  '.hero-badge',
   '.hero-title',
   '.hero-subtitle',
   '.hero-actions',
@@ -153,9 +162,8 @@ themeMediaQuery.addEventListener('change', (e) => {
     applyTheme(e.matches ? 'dark' : 'light');
   }
 });
-
 /* ============================
-   i18n – Language Toggle
+   i18n – Browser Language Auto Apply
    ============================ */
 const translations = {
   ja: {

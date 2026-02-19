@@ -233,16 +233,6 @@ img {
   z-index: 1;
 }
 
-.hero-badge {
-  margin-bottom: 32px;
-}
-
-.badge-img {
-  margin: 0 auto;
-  height: 240px;
-  border-radius: var(--radius-sm);
-}
-
 .hero-title {
   display: flex;
   flex-direction: column;
@@ -509,6 +499,8 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   justify-items: center;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .stats-card {
@@ -530,9 +522,10 @@ img {
 }
 
 .stats-img {
-  max-width: 100%;
+  max-width: min(100%, 420px);
   height: auto;
   margin: 0 auto;
+  border-radius: var(--radius-sm);
 }
 
 /* ============================

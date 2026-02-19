@@ -31,7 +31,7 @@
     <nav class="nav container">
       <a href="#" class="nav-logo">smizuoch</a>
       <div class="nav-controls">
-      <ul class="nav-list">
+      <ul class="nav-list" id="primary-navigation">
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#stats" class="nav-link">Stats</a></li>
@@ -56,7 +56,7 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
       </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-controls="primary-navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       </div>
@@ -195,12 +195,12 @@
     <section class="section" id="stats">
       <div class="container">
         <h2 class="section-title">My Stats</h2>
-        <div class="hero-badge">
-          <a href="https://profile.intra.42.fr/users/smizuoch" target="_blank" rel="noopener">
+        <div class="stats-grid">
+          <a href="https://profile.intra.42.fr/users/smizuoch" target="_blank" rel="noopener" class="stats-card">
             <img
               src="https://badge.mediaplus.ma/darkblue/smizuoch?1337Badge=off&UM6P=off"
               alt="smizuoch's 42 stats"
-              class="badge-img"
+              class="stats-img"
             />
           </a>
         </div>
