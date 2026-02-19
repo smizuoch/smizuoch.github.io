@@ -106,24 +106,50 @@ sections.forEach(section => sectionObserver.observe(section));
    ============================ */
 const themeToggle = document.getElementById('themeToggle');
 const htmlEl = document.documentElement;
+const THEME_STORAGE_KEY = 'theme';
+const themeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
 /**
- * テーマを適用し localStorage に保存する
+ * localStorage から保存済みテーマを取得する
+ */
+function getStoredTheme() {
+  try {
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    return stored === 'dark' || stored === 'light' ? stored : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+/**
+ * ユーザー選択のテーマを保存する
+ */
+function setStoredTheme(theme) {
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch (e) {
+    // localStorage が使えない環境では保存をスキップ
+  }
+}
+
+/**
+ * テーマをDOMに適用する
  */
 function applyTheme(theme) {
   htmlEl.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
 }
 
 // ボタンクリックでトグル
 themeToggle.addEventListener('click', () => {
   const current = htmlEl.getAttribute('data-theme');
-  applyTheme(current === 'dark' ? 'light' : 'dark');
+  const next = current === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  setStoredTheme(next);
 });
 
 // システム設定が変わったとき、ユーザーが手動で設定していなければ追従する
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-  if (!localStorage.getItem('theme')) {
+themeMediaQuery.addEventListener('change', (e) => {
+  if (!getStoredTheme()) {
     applyTheme(e.matches ? 'dark' : 'light');
   }
 });

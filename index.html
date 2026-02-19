@@ -12,8 +12,14 @@
   <!-- ダークモード FOUC 防止: CSS 読み込み前にテーマを適用 -->
   <script>
     (function () {
-      var saved = localStorage.getItem('theme');
-      var pref = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var pref;
+      var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      try {
+        var saved = localStorage.getItem('theme');
+        pref = (saved === 'dark' || saved === 'light') ? saved : systemTheme;
+      } catch (e) {
+        pref = systemTheme;
+      }
       document.documentElement.setAttribute('data-theme', pref);
     })();
   </script>
