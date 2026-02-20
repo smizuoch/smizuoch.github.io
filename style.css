@@ -465,24 +465,17 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #fff;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
 }
 
-.skill-c    { background: linear-gradient(135deg, #003f7f, #0066cc); }
-.skill-cpp  { background: linear-gradient(135deg, #004080, #0084c8); letter-spacing: -0.05em; }
-.skill-python { background: linear-gradient(135deg, #3776ab, #ffd43b); color: #fff; }
-.skill-ts   { background: linear-gradient(135deg, #3178c6, #235a97); }
-.skill-unity  { background: linear-gradient(135deg, #222, #444); }
-.skill-blender { background: linear-gradient(135deg, #ea7600, #f5a623); }
-.skill-vscode { background: linear-gradient(135deg, #0078d4, #2c9bd4); }
-.skill-vim  { background: linear-gradient(135deg, #019733, #00cc44); }
+.skill-icon img {
+  width: 28px;
+  height: 28px;
+}
 
-.skill-python svg {
-  color: #fff;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+[data-theme="dark"] .skill-icon img {
+  filter: brightness(0) invert(1);
 }
 
 .skill-name {
@@ -568,18 +561,27 @@ img {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-sm);
-  background: var(--color-accent-subtle);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   color: var(--color-accent);
-  transition: background var(--transition);
+  transition: border-color var(--transition);
+}
+
+.contact-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+[data-theme="dark"] .contact-icon img {
+  filter: brightness(0) invert(1);
 }
 
 .contact-card:hover .contact-icon {
-  background: var(--color-accent);
-  color: #fff;
+  border-color: var(--color-accent);
 }
 
 .contact-label {
