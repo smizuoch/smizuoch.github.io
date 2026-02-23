@@ -169,7 +169,7 @@ const translations = {
   ja: {
     'hero-available': 'お仕事受付中',
     'about-p1': '<a href="https://42tokyo.jp/" target="_blank" rel="noopener" class="link">42 Tokyo</a> で学ぶエンジニアです。ピアラーニング型の教育カリキュラムを通じて、低レイヤーからフロントエンドまで幅広く取り組んでいます。',
-    'about-p2': 'C / C++ を軸に、Python・TypeScript も活用しながら、ゲーム開発・システムプログラミング・Web 開発に興味を持っています。',
+    'about-p2': 'C / C++ を軸に、Python・TypeScript も活用しながら、ゲーム開発・システムプログラミング・Web 開発を行っております。',
     'about-p3': '日本語を主として使用しております。連絡はメールにお願いします。',
     'info-name-label': '名前',
     'info-name-value': '水落 正太郎',
@@ -192,7 +192,7 @@ const translations = {
   en: {
     'hero-available': 'Available for Work',
     'about-p1': 'Engineer studying at <a href="https://42tokyo.jp/" target="_blank" rel="noopener" class="link">42 Tokyo</a>. Through a peer-learning curriculum, I work on everything from low-level systems to frontend development.',
-    'about-p2': 'With C / C++ as my foundation, I also use Python and TypeScript, and I\'m interested in game development, systems programming, and web development.',
+    'about-p2': 'I primarily work with C/C++, while also utilizing Python and TypeScript for game development, system programming, and web development.',
     'about-p3': 'I am primarily a Japanese speaker. Please contact me via email.',
     'info-name-label': 'Name',
     'info-name-value': 'Shotaro Mizuochi',
