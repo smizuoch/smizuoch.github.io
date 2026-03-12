@@ -3,23 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>smizuoch</title>
-  <meta name="description" content="smizuoch - 42Tokyo Student. C / C++ / Python / TypeScript developer." />
+  <title id="pageTitle">smizuoch | ソフトウェアエンジニア</title>
+  <meta
+    id="metaDescription"
+    name="description"
+    content="42Tokyo在籍のソフトウェアエンジニア。C / C++ / Python / TypeScript を軸に、システムプログラミングからWeb開発まで幅広く対応。課題を深く理解し、クリーンで保守性の高いコードを届けます。"
+  />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://smizuoch.me/" />
-  <meta property="og:title" content="smizuoch" />
-  <meta property="og:description" content="42Tokyo在籍のソフトウェアエンジニア。C / C++ / Python / TypeScript を軸に、システムプログラミングからWeb開発まで幅広く対応。課題を深く理解し、クリーンで保守性の高いコードを届けます。" />
+  <meta id="ogTitle" property="og:title" content="smizuoch | ソフトウェアエンジニア" />
+  <meta
+    id="ogDescription"
+    property="og:description"
+    content="42Tokyo在籍のソフトウェアエンジニア。C / C++ / Python / TypeScript を軸に、システムプログラミングからWeb開発まで幅広く対応。課題を深く理解し、クリーンで保守性の高いコードを届けます。"
+  />
   <meta property="og:image" content="https://smizuoch.me/images/og-image.png" />
-  <meta property="og:locale" content="ja_JP" />
+  <meta id="ogLocale" property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="smizuoch" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://smizuoch.me/" />
-  <meta name="twitter:title" content="smizuoch" />
-  <meta name="twitter:description" content="42Tokyo在籍のソフトウェアエンジニア。C / C++ / Python / TypeScript を軸に、システムプログラミングからWeb開発まで幅広く対応。課題を深く理解し、クリーンで保守性の高いコードを届けます。" />
+  <meta id="twitterTitle" name="twitter:title" content="smizuoch | ソフトウェアエンジニア" />
+  <meta
+    id="twitterDescription"
+    name="twitter:description"
+    content="42Tokyo在籍のソフトウェアエンジニア。C / C++ / Python / TypeScript を軸に、システムプログラミングからWeb開発まで幅広く対応。課題を深く理解し、クリーンで保守性の高いコードを届けます。"
+  />
   <meta name="twitter:image" content="https://smizuoch.me/images/og-image.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,7 +42,7 @@
   <script>
     (function () {
       var pref;
-      var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var systemTheme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
       try {
         var saved = localStorage.getItem('theme');
         pref = (saved === 'dark' || saved === 'light') ? saved : systemTheme;
@@ -46,16 +58,16 @@
   <!-- Navigation -->
   <header class="header" id="header">
     <nav class="nav container">
-      <a href="#" class="nav-logo">smizuoch</a>
+      <a href="#home" class="nav-logo">smizuoch</a>
       <div class="nav-controls">
       <ul class="nav-list" id="primary-navigation">
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#stats" class="nav-link">Stats</a></li>
-        <li><a href="#work" class="nav-link">Work</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#about" class="nav-link" data-i18n="nav-about">概要</a></li>
+        <li><a href="#skills" class="nav-link" data-i18n="nav-skills">スキル</a></li>
+        <li><a href="#stats" class="nav-link" data-i18n="nav-stats">実績</a></li>
+        <li><a href="#work" class="nav-link" data-i18n="nav-work">仕事</a></li>
+        <li><a href="#contact" class="nav-link" data-i18n="nav-contact">連絡</a></li>
       </ul>
-      <button class="theme-toggle" id="themeToggle" aria-label="ダークモード切り替え">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="ダークモードに切り替え" aria-pressed="false">
         <!-- 太陽アイコン（ダークモード時に表示） -->
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true">
           <circle cx="12" cy="12" r="5"/>
@@ -73,7 +85,7 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
       </button>
-      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-controls="primary-navigation" aria-expanded="false">
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="メニューを開く" aria-controls="primary-navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       </div>
@@ -89,13 +101,13 @@
         <h1 class="hero-title">
           <span class="hero-name">smizuoch</span>
         </h1>
-        <p class="hero-subtitle">42 Tokyo Student &nbsp;·&nbsp; Software Developer</p>
+        <p class="hero-subtitle" data-i18n="hero-subtitle">42 Tokyo Student · Software Developer</p>
         <a href="#work" class="hero-available">
           <span class="available-dot"></span>
           <span data-i18n="hero-available">お仕事受付中</span>
         </a>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Contact</a>
+          <a href="#contact" class="btn btn-primary" data-i18n="hero-contact-btn">お問い合わせ</a>
           <a href="https://github.com/smizuoch" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
         </div>
       </div>
@@ -107,7 +119,7 @@
     <!-- About -->
     <section class="section" id="about">
       <div class="container">
-        <h2 class="section-title">About</h2>
+        <h2 class="section-title" data-i18n="about-title">概要</h2>
         <div class="about-grid">
           <div class="about-text">
             <p data-i18n-html="about-p1">
@@ -150,10 +162,10 @@
     <!-- Skills -->
     <section class="section section-alt" id="skills">
       <div class="container">
-        <h2 class="section-title">Skills &amp; Tools</h2>
+        <h2 class="section-title" data-i18n="skills-title">スキル / ツール</h2>
 
         <div class="skills-block">
-          <h3 class="skills-category">Languages</h3>
+          <h3 class="skills-category" data-i18n="skills-languages">言語</h3>
           <div class="skills-grid">
             <a href="https://www.open-std.org/jtc1/sc22/wg14/" target="_blank" rel="noopener" class="skill-card">
               <div class="skill-icon skill-c">
@@ -195,7 +207,7 @@
         </div>
 
         <div class="skills-block">
-          <h3 class="skills-category">Engines &amp; Tools</h3>
+          <h3 class="skills-category" data-i18n="skills-tools">環境 / ツール</h3>
           <div class="skills-grid">
             <a href="https://unity.com/" target="_blank" rel="noopener" class="skill-card">
               <div class="skill-icon skill-unity">
@@ -241,12 +253,13 @@
     <!-- Stats -->
     <section class="section" id="stats">
       <div class="container">
-        <h2 class="section-title">My Stats</h2>
+        <h2 class="section-title" data-i18n="stats-title">実績</h2>
         <div class="stats-grid">
           <a href="https://profile.intra.42.fr/users/smizuoch" target="_blank" rel="noopener" class="stats-card">
             <img
               src="https://badge.mediaplus.ma/darkblue/smizuoch?1337Badge=off&UM6P=off"
               alt="smizuoch's 42 stats"
+              data-i18n-alt="stats-image-alt"
               class="stats-img"
             />
           </a>
@@ -257,7 +270,7 @@
     <!-- Work / Hire Me -->
     <section class="section section-alt" id="work">
       <div class="container">
-        <h2 class="section-title">Work</h2>
+        <h2 class="section-title" data-i18n="work-title">お仕事</h2>
         <div class="work-status">
           <span class="available-dot"></span>
           <span class="work-status-text" data-i18n="work-status-text">現在、お仕事のご依頼を受け付けています</span>
@@ -297,7 +310,7 @@
     <!-- Contact -->
     <section class="section" id="contact">
       <div class="container">
-        <h2 class="section-title">Contact</h2>
+        <h2 class="section-title" data-i18n="contact-title">連絡先</h2>
         <p class="contact-desc" data-i18n="contact-desc">連絡はメールにお願いします。</p>
         <div class="contact-links">
           <a href="mailto:smizuoch@pm.me" class="contact-card">
@@ -308,7 +321,7 @@
               </svg>
             </div>
             <div>
-              <div class="contact-label">Email</div>
+              <div class="contact-label" data-i18n="contact-email-label">メール</div>
               <div class="contact-value">smizuoch@pm.me</div>
             </div>
           </a>

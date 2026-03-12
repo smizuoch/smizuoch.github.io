@@ -53,8 +53,13 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 84px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+section[id] {
+  scroll-margin-top: 84px;
 }
 
 body {
@@ -180,6 +185,10 @@ img {
 
 .nav-link:hover {
   color: var(--color-text-primary);
+}
+
+.nav-link.active {
+  color: var(--color-accent);
 }
 
 .nav-toggle {
@@ -901,5 +910,22 @@ img {
 
   .scroll-hint {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
